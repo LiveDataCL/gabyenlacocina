@@ -7,11 +7,22 @@
 <meta name="description" content="Galletas y panadería casera hecha a mano en Chile, sin conservantes ni aditivos. El 100% de la ganancia ayuda a niños, animalitos y familias afectadas por los terremotos en Caracas.">
 <meta name="theme-color" content="#24469F">
 
+<link rel="canonical" href="https://gabyenlacocina.cl/">
+
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://gabyenlacocina.cl/">
 <meta property="og:title" content="Gaby en la Cocina: Repostería que ayuda">
 <meta property="og:description" content="Galletas y panadería casera hecha a mano en Chile. El 100% de la ganancia ayuda a familias afectadas por los terremotos en Caracas.">
-<meta property="og:image" content="assets/hero-cookies.webp">
+<meta property="og:image" content="https://gabyenlacocina.cl/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:locale" content="es_CL">
+
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Gaby en la Cocina: Repostería que ayuda">
+<meta name="twitter:description" content="Galletas y panadería casera hecha a mano en Chile. El 100% de la ganancia ayuda a familias afectadas por los terremotos en Caracas.">
+<meta name="twitter:image" content="https://gabyenlacocina.cl/assets/og-image.jpg">
 
 <link rel="icon" href="assets/logo.webp" type="image/webp">
 
@@ -473,6 +484,16 @@
   .pack-wa-btn{
     transition:opacity .2s ease;
   }
+  .delivery-note{
+    font-size:0.82rem;
+    color:#5a4736;
+    background:var(--crema);
+    border-radius:10px;
+    padding:10px 12px;
+    margin-bottom:12px;
+    border:1px solid var(--line);
+  }
+  .delivery-note strong{color:var(--caramelo);}
 
   .grid-products{
     display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
@@ -750,11 +771,6 @@
         <p>🍪 <strong>Para tu antojo de hoy</strong><br>Galletas y panadería casera, hecha a mano</p>
         <p>💚 <strong>Para quien lo necesita</strong><br>100% de la ganancia va directo a ayudar a los afectados de Caracas</p>
       </div>
-
-      <div class="hero-actions">
-        <a class="btn-primary" href="#catalogo">Ver catálogo 🍪</a>
-        <a class="btn-ghost" href="#historia">Conoce la historia</a>
-      </div>
     </div>
 
     <div class="hero-right">
@@ -792,8 +808,6 @@
       WhatsApp
     </a>
     <a class="pill-link" href="https://instagram.com/gabyenlacocina" target="_blank" rel="noopener">📷 Instagram</a>
-    <a class="pill-link" href="#catalogo">🍪 Ver menú</a>
-    <a class="pill-link" href="#historia">💚 La historia</a>
   </div>
 </div>
 
@@ -822,6 +836,7 @@
               <h3>Escribes por WhatsApp</h3>
               <p>Coordinamos pedido, fecha y pago. Directo, sin formularios.</p>
               <p style="margin-top:10px; font-size:0.84rem; color:#8a7864; font-style:italic;">Trabajo de lunes a viernes, 9am–6pm, así que en ese horario puedo demorarme en responder; después de las 6pm y los fines de semana estoy más libre 🍪</p>
+              <p style="margin-top:10px; font-size:0.84rem; background:var(--harina-2); border-radius:10px; padding:10px 12px; color:var(--choco);">🚚 <strong>El precio no incluye delivery.</strong> El envío se coordina directamente o vía apps de envío; el costo depende de la distancia. Esto no es un negocio, es un aporte 💚</p>
             </div>
             <div class="how-card">
               <div class="icon">💚</div>
@@ -859,20 +874,6 @@
         <div class="bullet-content">
           <p class="bullet-intro">Para cuando el antojo no espera. Elige tu pack y reparte entre sabores.</p>
           <div class="pack-builder" id="packBuilderGalletas"></div>
-        </div>
-      </details>
-
-      <details class="bullet-item">
-        <summary>
-          <span class="bullet-icon">🥐</span>
-          <div class="bullet-text">
-            <h3>Panadería y repostería</h3>
-            <p>Pan, tortas y más, a pedido.</p>
-          </div>
-          <span class="chevron">⌄</span>
-        </summary>
-        <div class="bullet-content">
-          <div class="grid-products" id="productGridOtros"></div>
         </div>
       </details>
 
@@ -1018,24 +1019,16 @@
 
   // ---------- SABORES: masa congelada para hornear ----------
   const SABORES_MASA = [
-    { id:1, name:"Tradicional (Chips and Cookies)", emoji:"🍪", desc:"La clásica que nunca falla y que hago desde hace 20 años. Masa suave por dentro, bordes dorados, con chips de chocolate de la mejor calidad en cada mordida. Ese sabor único que aporta la mantequilla tostada... Comerse solo 1 es un reto." },
+    { id:1, name:"Choco Chips (tradicional)", emoji:"🍪", desc:"La clásica que nunca falla y que hago desde hace 20 años. Masa suave por dentro, bordes dorados, con chips de chocolate de la mejor calidad... Comerse solo 1 es un reto." },
     { id:2, name:"Red Velvet Cookie", emoji:"❤️", desc:"Ese terciopelo rojo, suaves, tiernas y con un delicioso sabor a chocolate que enamora junto a los trozos de chocolate de la mejor calidad. La cookie que parece postre de restaurante y la haces tú en tu hogar." },
     { id:3, name:"Chocolatosa", emoji:"🍫", desc:"Para los que no se conforman con poco chocolate. Masa de cacao puro, super suaves por dentro, y trozos de chocolate oscuro de la mejor calidad. Una es suficiente... o no." },
   ];
 
   // ---------- SABORES: galletas horneadas listas ----------
   const SABORES_GALLETA = [
-    { id:1, name:"Tradicional (Chips and Cookies)", emoji:"🍪", desc:"La clásica que nunca falla y que hago desde hace 20 años; masa suave por dentro, bordes dorados, con chips de chocolate de la mejor calidad en cada mordida. Ese sabor único que aporta la mantequilla tostada... Comerse solo 1 es un reto." },
+    { id:1, name:"Choco Chips (tradicional)", emoji:"🍪", desc:"La clásica que nunca falla y que hago desde hace 20 años. Masa suave por dentro, bordes dorados, con chips de chocolate de la mejor calidad... Comerse solo 1 es un reto." },
     { id:2, name:"Red Velvet Cookie", emoji:"❤️", desc:"Ese terciopelo rojo, suaves, tiernas y con un delicioso sabor a chocolate que enamora junto a los trozos de chocolate de la mejor calidad. La cookie que parece postre de restaurante y la haces tú en tu hogar." },
     { id:3, name:"Chocolatosa", emoji:"🍫", desc:"Para los que no se conforman con poco chocolate. Masa de cacao puro, super suaves por dentro, y trozos de chocolate oscuro de la mejor calidad. Una es suficiente... o no." },
-  ];
-
-  // ---------- OTROS: panadería y repostería, precio fijo por unidad (sin selector) ----------
-  const OTROS_PRODUCTOS = [
-    { id:1, name:"Pan de campo", cat:"Panadería", emoji:"🍞", img:"", price:"$3.800 / unidad", desc:"Corteza crocante, miga suave. Ideal para el desayuno." },
-    { id:2, name:"Cachitos venezolanos", cat:"Panadería", emoji:"🥐", img:"", price:"$2.500 / unidad", desc:"Rellenos de jamón, como los de allá." },
-    { id:3, name:"Torta de cumpleaños", cat:"Tortas", emoji:"🎂", img:"", price:"Desde $25.000", desc:"A pedido, con el sabor y diseño que prefieras." },
-    { id:4, name:"Brownies", cat:"Repostería", emoji:"🍫", img:"", price:"$4.000 / unidad", desc:"Húmedos por dentro, con nuez opcional." },
   ];
 
   const IMPACTO = [
@@ -1049,10 +1042,6 @@
 
   function whatsappLink(message) {
     return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  }
-
-  function whatsappLinkSimple(productName) {
-    return whatsappLink(`Hola Gaby! Quiero pedir: ${productName} 🍪`);
   }
 
   // ---------- Armador de pack: elijo tamaño, reparto unidades entre sabores ----------
@@ -1184,27 +1173,6 @@
     updateSummary();
   }
 
-  // ---------- Render: productos simples sin selector (panadería, tortas, repostería) ----------
-  function renderOtrosProductos(products, gridId){
-    const grid = document.getElementById(gridId);
-    grid.innerHTML = products.map(p=>`
-      <div class="card">
-        <div class="card-img" ${p.img ? `style="background-image:url('${p.img}'); background-size:cover; background-position:center;"` : ''} aria-hidden="true">
-          ${p.img ? '' : p.emoji}
-        </div>
-        <div class="card-body">
-          <span class="card-cat">${p.cat}</span>
-          <h3>${p.name}</h3>
-          <p>${p.desc}</p>
-          <div class="card-price-row">
-            <span class="price">${p.price}</span>
-            <a class="mini-btn" href="${whatsappLinkSimple(p.name)}" target="_blank" rel="noopener">Pedir por WhatsApp →</a>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
-
   function renderImpacto(){
     const grid = document.getElementById('impactoGrid');
     grid.innerHTML = IMPACTO.map(i=>`
@@ -1217,7 +1185,6 @@
 
   renderPackBuilder(SABORES_MASA, PRECIOS_MASA, 'packBuilderMasa', 'Masa para hornear');
   renderPackBuilder(SABORES_GALLETA, PRECIOS_GALLETA, 'packBuilderGalletas', 'Galletas horneadas');
-  renderOtrosProductos(OTROS_PRODUCTOS, 'productGridOtros');
   renderImpacto();
 </script>
 
